@@ -1,0 +1,70 @@
+set nocompatible
+filetype plugin on
+
+
+set number
+set relativenumber
+
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+
+call plug#begin()
+  Plug  'preservim/nerdtree'
+  Plug  'ervandew/supertab'
+  Plug  'ctrlpvim/ctrlp.vim'
+  Plug  'junegunn/fzf' 
+  Plug  'junegunn/fzf.vim'
+
+  Plug  'vim-airline/vim-airline'
+  Plug  'vim-airline/vim-airline-themes'
+
+  Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/gv.vim'
+
+  Plug 'wincent/command-t'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'vim-syntastic/syntastic'
+  Plug 'dyng/ctrlsf.vim'
+
+call plug#end()
+
+" Custom Keymap$. Works or not?
+map <c-s> :w<CR> 
+inoremap <c-s> <Esc>:w<CR>l 
+vnoremap <c-s> <Esc>:w<CR> 
+
+
+"" NERDTree settings.
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd VimEnter * NERDTree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+"" NERDTree settings.
+
+"" Airline settings.
+let g:airline_powerline_fonts = 1
+let g:airline_theme='tomorrow'
+"" Airline settings.
+
+"" ctrlsf.vim keymap settings.
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
