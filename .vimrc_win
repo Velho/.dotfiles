@@ -1,69 +1,105 @@
+
 set nocompatible
-filetype off
+filetype plugin on
 
 syntax enable
 
 set number
+set relativenumber
 set ruler
+
 set backspace=indent,eol,start
 
-" Tab settings
+set backupdir=~/vimfiles/backup
+set directory=~/vimfiles/backup
+
 set shiftwidth=4
 set tabstop=4
 set expandtab
 
-" Font
-set guifont=DejaVu_Sans_Mono_for_Powerline:h10
+" Gui font settings for the.. well gui.
+set mouse=a
+set guifont=Cascadia\ Code\ PL:h11
 
-" Swaps
-set backupdir=~/vimfiles/swap
-set directory=~/vimfiles/swap
+call plug#begin()
+    Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'PhilRunninger/nerdtree-buffer-ops'
+
+    Plug 'mhinz/vim-signify'
+    Plug 'mhinz/vim-startify'
+    Plug 'tpope/vim-surround'
+
+    Plug 'Asheq/close-buffers.vim'
+    Plug
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+
+    Plug 'kien/ctrlp.vim'
+
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    Plug 'tomasiser/vim-code-dark'
+    Plug 'bfrg/vim-cpp-modern'
+
+    " lsp plug.
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+    Plug 'jansenm/vim-cmake'
+call plug#end()
 
 
-" *        *
-"  *  *   *
-"   **  **
-"
-"     ***  "
-"    *   * "
-"    *   * "
-"     ***  "
-
-
-set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$HOME/vimfiles/bundle/')
-    Plugin 'VundleVim/Vundle.vim'
-
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'kien/ctrlp.vim'
-
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-
-    Plugin 'ervandew/supertab'    
-
-    "Plugin 'artur-shaik/vim-javacomplete2'
-call vundle#end()
-filetype plugin indent on
-
-" vim-airline
+colorscheme codedark
 set laststatus=2
 
-" vim-colorsschemes
-colorscheme molokai
+" C++ configs.
+let g:cpp_simple_highlight = 1
+let g:cpp_attributes_highlight = 1
+let g:cpp_member_highlight = 1
 
-" Nerdtree
+
+" let g:airline_theme='tomorrow'
+let g:airline_theme = 'codedark'
+let g:airline_powerline_fonts = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+
+" Close buffers.
+nnoremap <silent> <C-q> :Bdelete menu<CR>
+
+" Save the buffer.
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+
+" NERDTree keymaps.
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+
+" Asyncomplete.vim keymaps for Tab completion.
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+autocmd VimEnter * NERDTree | wincmd p
+
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 
-" Keymappings
-map <C-n> :NERDTreeToggle<CR>
-map <C-s> :w<CR>
-" Omni complete maps
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
-" Java omni complete
-" autocmd FileType java setlocal omnifunc=javacomplete#Complete
-" Java omnicomplete is very slow and doesn't function very well.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+
