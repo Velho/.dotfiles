@@ -1,0 +1,151 @@
+set nocompatible
+filetype plugin on
+
+syntax enable
+
+set number
+set relativenumber
+set ruler
+
+set backspace=indent,eol,start
+
+set backupdir=~/vimfiles/backup
+set directory=~/vimfiles/backup
+
+set shiftwidth=4
+set tabstop=4
+set expandtab
+
+
+" Gui font settings for the.. well gui.
+set mouse=a
+" set guifont=Cascadia\ Code\ PL:h11
+set guifont=FiraCode\ Nerd\ Font\ Mono:h12
+
+
+"if empty(glob('~/_vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"endif
+
+call plug#begin('~/_vimfiles/plugged')
+	Plug 'preservim/nerdtree'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'PhilRunninger/nerdtree-buffer-ops'
+
+    Plug 'mhinz/vim-signify'
+    Plug 'mhinz/vim-startify'
+    Plug 'tpope/vim-surround'
+  
+    Plug 'Asheq/close-buffers.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+
+    Plug 'kien/ctrlp.vim'
+
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    " Plug 'tomasiser/vim-code-dark'
+    " Plug 'bfrg/vim-cpp-modern'
+
+    " lsp plug.
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+
+    " Markdown
+    Plug 'godlygeek/tabular'
+    Plug 'preservim/vim-markdown'
+
+    if has ('nvim')
+        " Plug 'adelarsq/neoline.vim'
+        " Plug 'https://github.com/cripsgm/nvim-tabline'
+        Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+        " Nvim plugins ?
+        Plug 'kyazdani42/nvim-web-devicons'
+        Plug 'romgrk/barbar.nvim'
+        Plug 'folke/tokyonight.nvim'
+        Plug 'dracula/vim'
+        Plug 'Shatur/neovim-cmake'
+
+        Plug 'Numkil/ag.nvim'
+        Plug 'projekt0n/github-nvim-theme'
+    else
+        Plug 'jansenm/vim-cmake'
+    endif
+
+call plug#end()
+
+" colorscheme codedark
+
+if has ('nvim')
+    let g:lightline = { 'colorscheme': 'tokyonight' }
+    " colorscheme tokyonight
+    colorscheme github_dark
+endif
+
+colorscheme github_dark
+set laststatus=2
+
+" C++ configs.
+let g:cpp_simple_highlight = 1
+let g:cpp_attributes_highlight = 1
+let g:cpp_member_highlight = 1
+
+
+" let g:airline_theme='tomorrow'
+" let g:airline_theme = 'codedark'
+let g:airline_powerline_fonts = 1
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+let NERDTreeShowHidden=1
+
+" Close buffers.
+nnoremap <silent> <C-q> :Bdelete menu<CR>
+
+" Save the buffer.
+noremap <silent> <C-W>          :update<CR>
+vnoremap <silent> <C-W>         <C-C>:update<CR>
+inoremap <silent> <C-W>         <C-O>:update<CR>
+
+" NERDTree keymaps.
+" nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
+
+" Asyncomplete.vim keymaps for Tab completion.
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+
+autocmd VimEnter * NERDTree | wincmd p
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
