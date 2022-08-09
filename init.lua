@@ -1,4 +1,4 @@
-require("plugins")
+require('plugins')
 
 vim.opt.shiftwidth=4
 vim.opt.tabstop=4
@@ -16,6 +16,10 @@ vim.opt.wrap = false
 vim.opt.mouse = "a"
 vim.opt.guifont = "FiraCode Nerd Font Mono:h11"
 
-require ("lualine").setup()
+vim.cmd[[colorscheme tokyonight]]
 
-require ("keymap")
+-- Plugin initialization
+require ('lualine').setup()
+
+require ('keymap') -- Set user configured keymaps
+

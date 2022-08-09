@@ -22,8 +22,9 @@ return require('packer').startup(function(use)
 
 
   use {
-      'tanvirtin/vgit.nvim',
-      requires = { 'nvim-lua/plenary.nvim' }
-  }
-
+    'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup()
+      end
+    }
 end)
