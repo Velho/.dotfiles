@@ -16,10 +16,11 @@ vim.opt.wrap = false
 vim.opt.mouse = "a"
 vim.opt.guifont = "FiraCode Nerd Font Mono:h11"
 
-vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd[[colorscheme tokyonight]]
 
 -- Plugin initialization
 require ('lualine').setup()
+require ('github-theme').setup()
 
 require ('keymap') -- Set user configured keymaps
 
