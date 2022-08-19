@@ -24,7 +24,12 @@ return require('packer').startup(function(use)
     use 'dyng/ctrlsf.vim'
 
     -- LSP Configuration
+    use 'williamboman/nvim-lsp-installer'
     use 'neovim/nvim-lspconfig'
+
+    use 'natebosch/vim-lsc'
+
+    use 'mfussenegger/nvim-jdtls'
 
     use{ 'anuvyklack/pretty-fold.nvim',
        config = function()
