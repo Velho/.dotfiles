@@ -1,20 +1,27 @@
--- vim.opt.guicursor = ""
+-- opt.guicursor = ""
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+local opt = vim.opt
 
--- vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+opt.nu = true
+opt.relativenumber = true
 
-vim.opt.smartindent = true
-vim.opt.wrap = false
+-- opt.softtabstop = 4
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.hlsearch = false
+opt.incsearch = true
 
-vim.opt.mouse = "a"
-vim.opt.guifont = "FiraCode Nerd Font Mono:h11"
+opt.smartindent = true
+opt.wrap = false
 
-vim.opt.termguicolors = true
--- vim.opt.sessionoptions+=globals
+opt.mouse = "a"
+opt.guifont = "FiraCode Nerd Font Mono:h11"
+
+opt.termguicolors = true
+-- opt.sessionoptions+=globals
+
+-- opt.foldmethod = "expr"
+opt.foldmethod = "manual"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
