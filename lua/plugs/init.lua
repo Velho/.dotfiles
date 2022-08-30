@@ -45,7 +45,15 @@ return require('packer').startup(function(use)
     }
 
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
-
+    
+    use {
+      'lewis6991/gitsigns.nvim',
+      config = function()
+          require('gitsigns').setup()
+      end
+      -- tag = 'release' -- To use the latest release
+    }
+    
 end)
 
 -- require('plugs.config')
