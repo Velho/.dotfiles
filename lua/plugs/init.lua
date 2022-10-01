@@ -53,7 +53,11 @@ return require('packer').startup(function(use)
       end
       -- tag = 'release' -- To use the latest release
     }
-    
+
+    use {
+        "akinsho/toggleterm.nvim", tag = 'v2.*'
+    }
+
 end)
 
 -- require('plugs.config')

@@ -32,8 +32,10 @@ map('n', '<silent><leader>7', ':lua require"bufferline".go_to_buffer(7, true)<CR
 map('n', '<silent><leader>8', ':lua require"bufferline".go_to_buffer(8, true)<CR>')
 map('n', '<silent><leader>9', ':lua require"bufferline".go_to_buffer(9, true)<CR>')
 
-map('n', '<silent>[b', ':BufferLineCycleNext<CR>')
-map('n', '<silent>b]', ':BufferLineCycleNext<CR>')
+map('n', '<leader>[b', ':BufferLineCycleNext<CR>')
+map('n', '<leader>b]', ':BufferLineCycleNext<CR>')
 
-map('n', '<silent>be', ':BufferLineSortByExtensions<CR>')
-map('n', '<silent>bd', ':BufferLineSortByDirectory<CR>')
+map('n', '<leader>be', ':BufferLineSortByExtensions<CR>')
+map('n', '<leader>bd', ':BufferLineSortByDirectory<CR>')
+
+
