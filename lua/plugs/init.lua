@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/telescope.nvim'
+
     use 'jremmen/vim-ripgrep'
 
     use 'junegunn/fzf.vim'
@@ -25,10 +26,8 @@ return require('packer').startup(function(use)
     -- LSP Configuration
     use 'williamboman/nvim-lsp-installer'
     use 'neovim/nvim-lspconfig'
-
     use 'natebosch/vim-lsc'
-
-    use 'mfussenegger/nvim-jdtls'
+    use { 'neoclide/coc.nvim', branch = 'release' }
 
     use{ 'anuvyklack/pretty-fold.nvim',
        config = function()
