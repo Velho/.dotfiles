@@ -10,8 +10,6 @@ require('github-theme').setup()
 require('nvim-tree').setup()
 require('bufferline').setup()
 
-require('toggleterm').setup()
-
 require ('nvim-lsp-installer').setup {
     automatic_installation = true
 }
