@@ -7,7 +7,14 @@
 require('lualine').setup()
 require('github-theme').setup()
 
-require('nvim-tree').setup()
+require('nvim-tree').setup {
+    update_cwd = true,
+    update_focused_file = {
+        enable = true,
+        update_cwd = true,
+    },
+}
+
 require('bufferline').setup()
 
 require('toggleterm').setup()
@@ -17,3 +24,6 @@ require ('nvim-lsp-installer').setup {
 }
 
 require('plugs.lsp-confs')
+
+-- print "Configured plugins."
+

@@ -19,7 +19,9 @@ return require('packer').startup(function(use)
 
     use 'jremmen/vim-ripgrep'
 
-    use 'junegunn/fzf.vim'
+    use { 'junegunn/fzf.vim' }
+    use { 'junegunn/fzf' }
+
     use 'rking/ag.vim'
     use 'dyng/ctrlsf.vim'
 
@@ -60,4 +62,5 @@ return require('packer').startup(function(use)
 end)
 
 -- require('plugs.config')
+-- print "Loaded plugins."
 
