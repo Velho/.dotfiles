@@ -1,12 +1,12 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+    print("Loading packer.")
     use 'wbthomason/packer.nvim'
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    -- use {'dracula/vim', as = 'dracula'}
-    use 'folke/tokyonight.nvim'
-    use 'projekt0n/github-nvim-theme'
+
+    use { "ellisonleao/gruvbox.nvim" } -- Gruvbox theme
 
     use {
         'nvim-lualine/lualine.nvim',
@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
-    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
     
     use {
       'lewis6991/gitsigns.nvim',
@@ -55,12 +55,6 @@ return require('packer').startup(function(use)
       -- tag = 'release' -- To use the latest release
     }
 
-    use {
-        "akinsho/toggleterm.nvim", tag = 'v2.*'
-    }
-
 end)
 
--- require('plugs.config')
--- print "Loaded plugins."
 
