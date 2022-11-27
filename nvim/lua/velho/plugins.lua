@@ -1,8 +1,10 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    print("Loading packer.")
+    print("loading packer")
     use 'wbthomason/packer.nvim'
+
+    use 'kyazdani42/nvim-web-devicons'
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
@@ -19,6 +21,7 @@ return require('packer').startup(function(use)
 
     use 'jremmen/vim-ripgrep'
 
+    -- Is needed ??
     use { 'junegunn/fzf.vim' }
     use { 'junegunn/fzf' }
 
@@ -46,14 +49,22 @@ return require('packer').startup(function(use)
     }
 
     use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
-    
+    use 'tiagovla/scope.nvim'
+
     use {
-      'lewis6991/gitsigns.nvim',
+     'lewis6991/gitsigns.nvim',
       config = function()
           require('gitsigns').setup()
       end
       -- tag = 'release' -- To use the latest release
     }
+
+    -- Git plugins.
+    use 'TimUntersberger/neogit'
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+
+    use {'iamcco/markdown-preview.nvim'}
 
 end)
 
