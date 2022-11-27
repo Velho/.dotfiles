@@ -39,3 +39,6 @@ map('n', '<leader>be', ':BufferLineSortByExtensions<CR>')
 map('n', '<leader>bd', ':BufferLineSortByDirectory<CR>')
 
 
+-- Close current buffer
+map('n', '<leader>bq', ':Bdelete<CR>')
+
