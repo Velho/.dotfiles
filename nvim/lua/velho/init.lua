@@ -5,4 +5,4 @@ require("velho.lsp-confs")
 require("velho.options")
 require("velho.keymap")
 
-require("velho.fix")
+require("velho.scores")

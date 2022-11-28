@@ -63,9 +63,21 @@ return require('packer').startup(function(use)
     use 'TimUntersberger/neogit'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
+    use {
+        "startup-nvim/startup.nvim",
+        requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+        config = function()
+            require"startup".setup ({ theme = "dashboard" })
+        end
+    }
 
-    use {'iamcco/markdown-preview.nvim'}
+    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+          require("toggleterm").setup()
+        end
+    }
 
+    use { 'iamcco/markdown-preview.nvim' }
+    use { 'Shatur/neovim-session-manager' }
 end)
 
 

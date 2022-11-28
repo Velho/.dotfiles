@@ -1,6 +1,6 @@
 print("apply scores")
 
-require'velho.fix.nvim-tree-autoclose'
-require'velho.fix.gitsigns-keymaps'
-require'velho.fix.nvim-treesitter-autogroups'
-require'velho.fix.telescope-in-folder'
+require'velho.scores.nvim-tree-autoclose'
+require'velho.scores.gitsigns-keymaps'
+require'velho.scores.nvim-treesitter-autogroups'
+require'velho.scores.telescope-in-folder'
