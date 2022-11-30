@@ -77,7 +77,7 @@ return require('packer').startup(function(use)
     }
 
     use { 'iamcco/markdown-preview.nvim' }
-    use { 'Shatur/neovim-session-manager' }
+    use { 'natecraddock/sessions.nvim' }
 end)
 
 
