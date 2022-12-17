@@ -28,15 +28,6 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    use 'jremmen/vim-ripgrep'
-    use 'rking/ag.vim'
-
-    -- LSP Configuration
-    use 'williamboman/nvim-lsp-installer'
-    use 'neovim/nvim-lspconfig'
-    use 'natebosch/vim-lsc'
-    use { 'neoclide/coc.nvim', branch = 'release' }
-
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -54,6 +45,39 @@ return require('packer').startup(function(use)
       end
       -- tag = 'release' -- To use the latest release
     }
+    -- LSP plugins
+
+    use { -- LSP Configuration & Plugins
+        'neovim/nvim-lspconfig',
+        requires = {
+            -- Automatically install LSPs to stdpath for neovim
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+
+            -- Useful status updates for LSP
+            'j-hui/fidget.nvim',
+        },
+    }
+
+    use { -- Autocompletion
+        'hrsh7th/nvim-cmp',
+        requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    }
+
+    use { -- Additional text objects via treesitter
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        after = 'nvim-treesitter',
+    }
+
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
+
+    use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+    use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+    use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+    use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
     -- Git plugins.
     use 'TimUntersberger/neogit'
@@ -62,14 +86,6 @@ return require('packer').startup(function(use)
         requires = 'nvim-lua/plenary.nvim',
         config = function()
             require'diffview'.setup()
-        end
-    }
-
-    use {
-        "startup-nvim/startup.nvim",
-        requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-        config = function()
-            require"startup".setup ({ theme = "dashboard" })
         end
     }
 
