@@ -75,6 +75,11 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local util = require 'nvim_lsp/util'
+require('lspconfig')['clangd'].setup {
+  root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")
+}
+
 -- Turn on lsp status information
 require('fidget').setup()
 
