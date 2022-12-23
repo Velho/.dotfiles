@@ -75,6 +75,11 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require('lspconfig')['clangd'].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 -- Turn on lsp status information
 require('fidget').setup()
 

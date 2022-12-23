@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-    use { 
+    use {
         "ellisonleao/gruvbox.nvim",
         config = function()
             require'gruvbox'.setup()
@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
     }
 
     use 'nvim-lua/popup.nvim'
-    
+
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
@@ -64,6 +64,9 @@ return require('packer').startup(function(use)
         requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     }
 
+    use 'williamboman/nvim-lsp-installer'
+    use 'folke/which-key.nvim'
+
     use { -- Additional text objects via treesitter
         'nvim-treesitter/nvim-treesitter-textobjects',
         after = 'nvim-treesitter',
@@ -81,7 +84,7 @@ return require('packer').startup(function(use)
 
     -- Git plugins.
     use 'TimUntersberger/neogit'
-    use { 
+    use {
         'sindrets/diffview.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
