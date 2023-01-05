@@ -38,3 +38,10 @@ vim.cmd [[colorscheme onedark]]
 vim.o.completeopt = 'menuone,noselect'
 
 vim.cmd [[ set clipboard+=unnamedplus ]]
+-- vim.cmd [[ let g:better_whitespace_enabled=1 ]]
+--
+
+vim.cmd [[
+    set list
+    set listchars=eol:↵,trail:~,tab:>-,nbsp:␣
+]]

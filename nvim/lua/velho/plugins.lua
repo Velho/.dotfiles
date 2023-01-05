@@ -92,6 +92,14 @@ return require('packer').startup(function(use)
         end
     }
 
-end)
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
+    }
 
+    use 'simrat39/symbols-outline.nvim'
+end)
 
