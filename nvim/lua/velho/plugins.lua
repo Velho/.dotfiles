@@ -66,6 +66,8 @@ return require('packer').startup(function(use)
 
     use 'williamboman/nvim-lsp-installer'
     use 'folke/which-key.nvim'
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
 
     use { -- Additional text objects via treesitter
         'nvim-treesitter/nvim-treesitter-textobjects',
