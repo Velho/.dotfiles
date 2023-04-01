@@ -75,6 +75,14 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local util = require'lspconfig'.util
+
+require('lspconfig').clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")
+}
+
 -- Turn on lsp status information
 require('fidget').setup()
 

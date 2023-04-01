@@ -36,3 +36,5 @@ vim.o.termguicolors = true
 vim.cmd [[colorscheme onedark]]
 
 vim.o.completeopt = 'menuone,noselect'
+
+vim.cmd [[ set clipboard+=unnamedplus ]]
