@@ -72,6 +72,8 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
     }
 
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
 
@@ -84,14 +86,7 @@ return require('packer').startup(function(use)
 
     -- Git plugins.
     use 'TimUntersberger/neogit'
-    use {
-        'sindrets/diffview.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-            require'diffview'.setup()
-        end
-    }
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
 end)
-
 
