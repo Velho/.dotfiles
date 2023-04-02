@@ -24,11 +24,11 @@ opt.cmdheight = 1 -- cmd height
 
 opt.termguicolors = true
 -- opt.sessionoptions+=globals
--- opt.foldmethod = "expr"
+opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.fen = false
 
-opt.updatetime = 250
+opt.updatetime = 50
 
 -- Set up the theme.
 vim.o.termguicolors = true

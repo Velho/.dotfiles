@@ -53,21 +53,30 @@ return require('packer').startup(function(use)
         'neovim/nvim-lspconfig',
         requires = {
             -- Automatically install LSPs to stdpath for neovim
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
+            -- 'williamboman/mason.nvim',
+            -- 'williamboman/mason-lspconfig.nvim',
 
             -- Useful status updates for LSP
             'j-hui/fidget.nvim',
         },
     }
 
+    use 'ray-x/lsp_signature.nvim'
+    use 'p00f/clangd_extensions.nvim'
+
     use { -- Autocompletion
         'hrsh7th/nvim-cmp',
         requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     }
 
+    use 'hrsh7th/cmp-buffer'
+    -- For path completion
+    use 'hrsh7th/cmp-path'
+
     use 'williamboman/nvim-lsp-installer'
     use 'folke/which-key.nvim'
+    -- autopair [], {}, etc
+    use 'windwp/nvim-autopairs'
 
     use { -- Additional text objects via treesitter
         'nvim-treesitter/nvim-treesitter-textobjects',
@@ -87,8 +96,10 @@ return require('packer').startup(function(use)
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
     -- Git plugins.
-    use 'TimUntersberger/neogit'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
+    -- testing out these
+    use 'preservim/nerdcommenter'
+    use 'voldikss/vim-floaterm'
 end)
 
