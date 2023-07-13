@@ -62,7 +62,7 @@ require'cmp'.setup {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
-require'fidget'.setup()
+-- require'fidget'.setup()
 local servers = { 'clangd', 'cmake', 'rust_analyzer', 'pyright', 'lua_ls', 'marksman' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
