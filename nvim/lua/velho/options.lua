@@ -1,34 +1,33 @@
-local opt = vim.opt
 
-opt.guicursor = ""
-opt.nu = true
-opt.relativenumber = true
+vim.o.guicursor = ""
+vim.o.nu = true
+vim.o.relativenumber = true
 
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = true
 
-opt.hlsearch = false
-opt.incsearch = true
+vim.o.hlsearch = false
+vim.o.incsearch = true
 
-opt.smartindent = true
-opt.wrap = false
+vim.o.smartindent = true
+vim.o.wrap = false
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-opt.mouse = 'a'
-opt.guifont = "SauceCodePro Nerd Font Mono:h11"
+vim.o.mouse = 'a'
+vim.o.guifont = "SauceCodePro Nerd Font Mono:h11"
 
-opt.cmdheight = 1 -- cmd height
+vim.o.cmdheight = 1 -- cmd height
 
-opt.termguicolors = true
+vim.o.termguicolors = true
 -- opt.sessionoptions+=globals
-opt.foldmethod = "expr"
+vim.o.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.fen = false
 
-opt.updatetime = 50
+vim.o.updatetime = 50
 
 -- Set up the theme.
 vim.o.termguicolors = true

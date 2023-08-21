@@ -40,7 +40,7 @@ map('n', '<leader>b]', ':bprev<CR>')
 map('n', '<leader>be', ':BufferLineSortByExtensions<CR>')
 map('n', '<leader>bd', ':BufferLineSortByDirectory<CR>')
 
-
+map('n', '<leader>st', ':FloatermToggle<CR>')
 -- Close current buffer
 map('n', '<leader>bq', ':Bdelete<CR>')
 

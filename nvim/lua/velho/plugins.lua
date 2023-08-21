@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     use {
-        "ellisonleao/gruvbox.nvim",
+        'ellisonleao/gruvbox.nvim',
         config = function()
             require'gruvbox'.setup()
         end
