@@ -7,7 +7,7 @@ function map(mode, lhs, rhs, opts)
 end
 
 map('n', '<leader>pv', ':Ex<CR>')
-map('n', '<leader>pl', ':ls<CR>')
+map('n', '<leader>ll', ':ls<CR>')
 map('n', '<leader>w', ':w<CR>')
 
 -- map('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
