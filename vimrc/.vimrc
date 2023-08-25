@@ -78,10 +78,16 @@ set foldmethod=expr
 runtime vim-lsp.vim
 runtime asyncomplete.vim
 runtime asyncomplete-clang.vim
+runtime fzf-conf.vim
 
 " FZF
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>),
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(

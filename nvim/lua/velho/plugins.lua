@@ -101,5 +101,10 @@ return require('packer').startup(function(use)
     -- testing out these
     use 'preservim/nerdcommenter'
     use 'voldikss/vim-floaterm'
+
+    use {
+        'junegunn/fzf.vim',
+        requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+     }
 end)
 
