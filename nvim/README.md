@@ -10,8 +10,13 @@
 
 2. create symlink to dotfiles repository.
 
+bash
 ```
     ln -s ~/.dotfiles/nvim ~/.config/nvim
+```
+powershell (requires system administrator access)
+```
+New-Item -ItemType SymbolicLink -Target ~/.dotfiles/nvim -Path ~/AppData/local/nvim
 ```
 
 3. install plugin manager from [plugins](!plugins)
