@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
     use 'nvim-lua/popup.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
-    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+    use {'akinsho/bufferline.nvim', tag = "v4.4.*", requires = 'nvim-tree/nvim-web-devicons'}
 
     use {
      'lewis6991/gitsigns.nvim',
