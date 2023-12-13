@@ -13,6 +13,15 @@ Nord theme is used for current config. Nord requires [tpm](#TPM)
 
 ## Setup
 
+### Prerequisites
+
+Install xclip
+```
+# apt install xclip
+```
+
+### Configure
+
 1. Git clone [TPM](#TPM)
 ```
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
