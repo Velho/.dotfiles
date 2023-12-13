@@ -10,7 +10,7 @@ set expandtab
 
 set noswapfile
 
-set guifont=FiraCode\ NFM\ 12
+set guifont=FiraCode\ Nerd\ Font\ 12
 set backspace=indent,eol,start  " more powerful backspacing
 
 " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
