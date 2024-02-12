@@ -108,5 +108,17 @@ return require('packer').startup(function(use)
         'junegunn/fzf.vim',
         requires = { 'junegunn/fzf', run = ':call fzf#install()' }
      }
-end)
+
+    use 'folke/zen-mode.nvim'
+    use 'tpope/vim-obsession'
+
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-pack/nvim-spectre'
+
+    use {
+        'NeogitOrg/neogit',
+        requires = { 'sindrets/diffview.nvim', 'ibhagwan/fzf-lua' },
+    }
+
+ end)
 

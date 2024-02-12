@@ -6,6 +6,11 @@ function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+
+map('n', '<leader>gg', ':Neogit cwd=%:p:h<CR>')
+map('n', '<leader>gc', ':Neogit commit<CR>')
+map('n', '<leader>gf', ':Neogit kind=floating<CR>')
+
 map('n', '<leader>pv', ':Ex<CR>')
 map('n', '<leader>ll', ':ls<CR>')
 map('n', '<leader>w', ':w<CR>')
