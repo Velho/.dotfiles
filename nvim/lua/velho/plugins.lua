@@ -117,7 +117,7 @@ return require('packer').startup(function(use)
     use {
         'NeogitOrg/neogit',
         requires = { 'sindrets/diffview.nvim', 'ibhagwan/fzf-lua' },
-        branch = 'nightly',
+        branch = 'master',
     }
 
  end)
