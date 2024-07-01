@@ -18,7 +18,7 @@ local ftMap = {
     git = ''
 }
 
-require('ufo').setup({
+require('ufo').setup{
     open_fold_hl_timeout = 150,
     close_fold_kinds_for_ft = {'imports', 'comment'},
     preview = {
@@ -42,7 +42,7 @@ require('ufo').setup({
 
         -- refer to ./doc/example.lua for detail
     end
-})
+}
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)

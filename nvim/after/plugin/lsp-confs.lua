@@ -97,7 +97,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- require'fidget'.setup()
-local servers = { 'clangd', 'cmake', 'rust_analyzer', 'pyright', 'lua_ls', 'marksman' }
+local servers = { 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
@@ -113,14 +113,6 @@ require('lspconfig')['pyright'].setup{
 require('lspconfig')['tsserver'].setup{
   on_attach = on_attach,
   -- flags = lsp_flags,
-}
-require('lspconfig')['rust_analyzer'].setup{
-  on_attach = on_attach,
-  -- flags = lsp_flags,
-  -- Server-specific settings...
-  settings = {
-    ["rust-analyzer"] = {}
-  }
 }
 
 local util = require'lspconfig'.util

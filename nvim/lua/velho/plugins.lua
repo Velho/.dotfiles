@@ -120,5 +120,7 @@ return require('packer').startup(function(use)
         branch = 'master',
     }
 
+    use 'mrcjkb/rustaceanvim'
+
  end)
 
