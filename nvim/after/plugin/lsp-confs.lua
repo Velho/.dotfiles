@@ -97,7 +97,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- require'fidget'.setup()
-local servers = { 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman' }
+local servers = { 'robotframework_ls', 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {

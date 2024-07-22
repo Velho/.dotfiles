@@ -122,5 +122,7 @@ return require('packer').startup(function(use)
 
     use 'mrcjkb/rustaceanvim'
 
+    use 'projekt0n/github-nvim-theme'
+    use 'pappasam/papercolor-theme-slim'
  end)
 

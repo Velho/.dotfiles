@@ -31,7 +31,13 @@ vim.o.updatetime = 50
 
 -- Set up the theme.
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+-- vim.cmd [[colorscheme onedark]]
+
+-- vim.o.background = 'light'
+-- vim.cmd [[colorscheme PaperColorSlim]]
+
+-- vim.o.background = 'light'
+vim.cmd [[colorscheme github_dark]]
 
 vim.o.completeopt = 'menuone,noselect'
 
