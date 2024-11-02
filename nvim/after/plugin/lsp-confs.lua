@@ -2,59 +2,6 @@ local lspconfig = require'lspconfig'
 local root_pattern = lspconfig.util.root_pattern
 
 -- Mappings. See `:help vim.diagnostic.*` for documentation on any of the below functions local opts = { noremap=true, silent=true } vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts) vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts) vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts) -- Use an on_attach function to only map the following keys after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- signature
-  require'lsp_signature'.on_attach({
-    bind = true,
-    handler_opts = {
-      border = "rounded",
-    }
-  }, bufnr)
-
- local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  local lsp_signature = require'lsp_signature'
-
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration(), bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  --
-  vim.keymap.set('n', '<c-k>', function()
-    require'lsp_signature'.toggle_float_win()
-  end, bufopts)
-
-  vim.keymap.set('n', '<leader>k', function()
-    vim.lsp.buf.signature_help()
-  end, bufopts)
-
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  --
-  vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end
-
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -69,6 +16,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -85,7 +33,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-
 -- for better completion experience
 -- vim.o.completeopt = 'menuone,noselect'
 
@@ -97,11 +44,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- require'fidget'.setup()
-local servers = { 'robotframework_ls', 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman' }
+local servers = { 'robotframework_ls', 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman', 'rust_analyzer' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
+    -- on_attach = on_attach,
     capabilities = capabilities,
   }
 end
@@ -110,23 +57,28 @@ require('lspconfig')['pyright'].setup{
   on_attach = on_attach,
   -- flags = lsp_flags,
 }
-require('lspconfig')['tsserver'].setup{
-  on_attach = on_attach,
-  -- flags = lsp_flags,
-}
 
 local util = require'lspconfig'.util
 
 require'lspconfig'.clangd.setup {
-  on_attach = on_attach,
+  -- on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    'clangd',
-    '--completion-parse=always',
-    '--completion-style=completion'
+    "/usr/bin/clangd",
+    -- "--completion-parse=always",
+    -- "--completion-style=completion",
+    -- "--log=verbose",
   },
-  root_dir = util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-  filetypes = { "c", "cpp" }
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  root_dir = lspconfig.util.root_pattern(
+    '.clangd'
+    ,'.clang-tidy'
+    ,'.clang-format'
+    ,'compile_commands.json'
+    ,'compile_flags.txt'
+    ,'configure.ac'
+    ,'.git'
+  ),
 }
 
 require'lspconfig'.cmake.setup {
@@ -154,39 +106,3 @@ require('lspconfig').lua_ls.setup {
 }
 
 require'lspconfig'.marksman.setup {}
-
-
-
--- local val = os.execute('hdl_checker --version')
--- print('ret : ', val)
-local f_hdl = io.popen('hdl_checker --version')
-local ver = f_hdl:read('*a')
-f_hdl:close()
-
-
-min_version = '^0.7'
-
-if ver ~= nil then
-
-  if ver:find(min_version) ~= nil then
-    print(string.format('hdl_checker: %s', ver))
-    -- Only define once
-    if not require'lspconfig.configs'.hdl_checker then
-        require'lspconfig.configs'.hdl_checker = {
-          default_config = {
-          cmd = {"hdl_checker", "--lsp", };
-          filetypes = {"vhdl", "verilog", "systemverilog"};
-            root_dir = function(fname)
-              -- will look for the .hdl_checker.config file in parent directory, a
-              -- .git directory, or else use the current directory, in that order.
-              local util = require'lspconfig'.util
-              return util.root_pattern('.hdl_checker.config')(fname) or util.find_git_ancestor(fname) or util.path.dirname(fname)
-            end;
-            settings = {};
-          };
-        }
-    end
-
-      require'lspconfig'.hdl_checker.setup{}
-  end
-end

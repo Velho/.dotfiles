@@ -82,7 +82,7 @@ return require('packer').startup(function(use)
         after = 'nvim-treesitter',
     }
 
-    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+    -- use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
