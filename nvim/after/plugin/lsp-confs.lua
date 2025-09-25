@@ -47,20 +47,19 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local servers = { 'robotframework_ls', 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
-  require('lspconfig')[lsp].setup {
+  vim.lsp.config(lsp, {
     -- on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 end
 
-require('lspconfig')['pyright'].setup{
+vim.lsp.config('pyright', {
   on_attach = on_attach,
-  -- flags = lsp_flags,
-}
+})
 
 local util = require'lspconfig'.util
 
-require'lspconfig'.clangd.setup {
+vim.lsp.config('clangd', {
   -- on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
@@ -79,15 +78,15 @@ require'lspconfig'.clangd.setup {
     ,'configure.ac'
     ,'.git'
   ),
-}
+})
 
-require'lspconfig'.cmake.setup {
+vim.lsp.config('cmake', {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "cmake", "txt" },
-}
+})
 
-require('lspconfig').lua_ls.setup {
+vim.lsp.config('lua_ls', {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -103,6 +102,5 @@ require('lspconfig').lua_ls.setup {
       }
     },
   },
-}
+})
 
-require'lspconfig'.marksman.setup {}
