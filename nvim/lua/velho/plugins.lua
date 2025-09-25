@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
          requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
+    use {'nyoom-engineering/oxocarbon.nvim'}
+
     use 'nvim-treesitter/nvim-treesitter-context'
 
     use 'nvim-lua/popup.nvim'

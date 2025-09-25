@@ -37,7 +37,7 @@ vim.o.termguicolors = true
 -- vim.cmd [[colorscheme PaperColorSlim]]
 
 -- vim.o.background = 'light'
-vim.cmd [[colorscheme github_dark]]
+-- vim.cmd [[colorscheme github_dark]]
 
 vim.o.completeopt = 'menuone,noselect'
 
@@ -53,3 +53,5 @@ vim.o.foldenable = true
 vim.opt.listchars = {eol = '↵', tab = '>·', trail = '~', extends = '>', precedes = '<'} -- , space = '␣'
 vim.o.list = true
 
+vim.opt.background = "dark" -- set this to dark or light
+vim.cmd.colorscheme "oxocarbon"
