@@ -44,40 +44,18 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- require'fidget'.setup()
-local servers = { 'robotframework_ls', 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman' }
+local servers = { 'robotframework_ls', 'cmake', 'pyright', 'lua_ls', 'marksman', 'vhdl_ls' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {
     -- on_attach = on_attach,
     capabilities = capabilities,
   })
+
 end
 
 vim.lsp.config('pyright', {
   on_attach = on_attach,
-})
-
-local util = require'lspconfig'.util
-
-vim.lsp.config('clangd', {
-  -- on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {
-    "/usr/bin/clangd",
-    -- "--completion-parse=always",
-    -- "--completion-style=completion",
-    -- "--log=verbose",
-  },
-  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-  root_dir = lspconfig.util.root_pattern(
-    '.clangd'
-    ,'.clang-tidy'
-    ,'.clang-format'
-    ,'compile_commands.json'
-    ,'compile_flags.txt'
-    ,'configure.ac'
-    ,'.git'
-  ),
 })
 
 vim.lsp.config('cmake', {
@@ -103,4 +81,7 @@ vim.lsp.config('lua_ls', {
     },
   },
 })
+
+-- enable all listed servers ..
+vim.lsp.enable(servers)
 
