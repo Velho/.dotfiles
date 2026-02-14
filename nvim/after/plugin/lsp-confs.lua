@@ -44,7 +44,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- require'fidget'.setup()
-local servers = { 'robotframework_ls', 'cmake', 'pyright', 'lua_ls', 'marksman', 'vhdl_ls' }
+local servers = { 'robotframework_ls', 'clangd', 'cmake', 'pyright', 'lua_ls', 'marksman', 'rust_analyzer', 'vhdl_ls' }
 -- Ensure the servers above are installed
 for _, lsp in ipairs(servers) do
   vim.lsp.config(lsp, {
