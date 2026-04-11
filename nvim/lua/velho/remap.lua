@@ -7,16 +7,16 @@ function map(mode, lhs, rhs, opts)
 end
 
 
-map('n', '<leader>gg', ':Neogit cwd=%:p:h<CR>')
-map('n', '<leader>gc', ':Neogit commit<CR>')
-map('n', '<leader>gf', ':Neogit kind=floating<CR>')
-
-map('n', '<leader>pv', ':Ex<CR>')
-map('n', '<leader>ll', ':ls<CR>')
-map('n', '<leader>w', ':w<CR>')
-
-map('n', '<leader>tp', ':tabp<CR>')
-map('n', '<leader>tn', ':tabn<CR>')
+-- map('n', '<leader>gg', ':Neogit cwd=%:p:h<CR>')
+-- map('n', '<leader>gc', ':Neogit commit<CR>')
+-- map('n', '<leader>gf', ':Neogit kind=floating<CR>')
+-- 
+-- map('n', '<leader>pv', ':Ex<CR>')
+-- map('n', '<leader>ll', ':ls<CR>')
+-- map('n', '<leader>w', ':w<CR>')
+-- 
+-- map('n', '<leader>tp', ':tabp<CR>')
+-- map('n', '<leader>tn', ':tabn<CR>')
 
 
 -- map('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
@@ -25,31 +25,31 @@ map('n', '<leader>tn', ':tabn<CR>')
 -- map('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
 
 -- nvim-tree keymaps
-map('n', '<leader>tt', ':NvimTreeToggle<CR>')      -- tt -> TreeToggle
-map('n', '<leader>tf', ':NvimTreeFocus<CR>')       -- tf -> TreeFocus
-map('n', '<leader>tff', ':NvimTreeFindFile<CR>')   -- tff -> TreeFindFile (does tff work, no conflicts??)
-map('n', '<leader>tc', ':NvimTreeCollapse<CR>')    -- tc -> TreeCollapse
+-- map('n', '<leader>tt', ':NvimTreeToggle<CR>')      -- tt -> TreeToggle
+-- map('n', '<leader>tf', ':NvimTreeFocus<CR>')       -- tf -> TreeFocus
+-- map('n', '<leader>tff', ':NvimTreeFindFile<CR>')   -- tff -> TreeFindFile (does tff work, no conflicts??)
+-- map('n', '<leader>tc', ':NvimTreeCollapse<CR>')    -- tc -> TreeCollapse
 
 -- bufferline keymaps
-map('n', '<silent><leader>1', ':lua require"bufferline".go_to_buffer(1, true)<CR>')
-map('n', '<silent><leader>2', ':lua require"bufferline".go_to_buffer(2, true)<CR>')
-map('n', '<silent><leader>3', ':lua require"bufferline".go_to_buffer(3, true)<CR>')
-map('n', '<silent><leader>4', ':lua require"bufferline".go_to_buffer(4, true)<CR>')
-map('n', '<silent><leader>5', ':lua require"bufferline".go_to_buffer(5, true)<CR>')
-map('n', '<silent><leader>6', ':lua require"bufferline".go_to_buffer(6, true)<CR>')
-map('n', '<silent><leader>7', ':lua require"bufferline".go_to_buffer(7, true)<CR>')
-map('n', '<silent><leader>8', ':lua require"bufferline".go_to_buffer(8, true)<CR>')
-map('n', '<silent><leader>9', ':lua require"bufferline".go_to_buffer(9, true)<CR>')
-
+-- map('n', '<silent><leader>1', ':lua require"bufferline".go_to_buffer(1, true)<CR>')
+-- map('n', '<silent><leader>2', ':lua require"bufferline".go_to_buffer(2, true)<CR>')
+-- map('n', '<silent><leader>3', ':lua require"bufferline".go_to_buffer(3, true)<CR>')
+-- map('n', '<silent><leader>4', ':lua require"bufferline".go_to_buffer(4, true)<CR>')
+-- map('n', '<silent><leader>5', ':lua require"bufferline".go_to_buffer(5, true)<CR>')
+-- map('n', '<silent><leader>6', ':lua require"bufferline".go_to_buffer(6, true)<CR>')
+-- map('n', '<silent><leader>7', ':lua require"bufferline".go_to_buffer(7, true)<CR>')
+-- map('n', '<silent><leader>8', ':lua require"bufferline".go_to_buffer(8, true)<CR>')
+-- map('n', '<silent><leader>9', ':lua require"bufferline".go_to_buffer(9, true)<CR>')
+-- 
 map('n', '<leader>b[', ':bnext<CR>')
 map('n', '<leader>b]', ':bprev<CR>')
 -- map('n', '<leader>[b', ':BufferLineCycleNext<CR>')
 -- map('n', '<leader>b]', ':BufferLineCycleNext<CR>')
 
-map('n', '<leader>be', ':BufferLineSortByExtensions<CR>')
-map('n', '<leader>bd', ':BufferLineSortByDirectory<CR>')
+-- map('n', '<leader>be', ':BufferLineSortByExtensions<CR>')
+-- map('n', '<leader>bd', ':BufferLineSortByDirectory<CR>')
 
-map('n', '<leader>st', ':FloatermToggle<CR>')
+-- map('n', '<leader>st', ':FloatermToggle<CR>')
 -- Close current buffer
 map('n', '<leader>bq', ':Bdelete<CR>')
 
@@ -65,7 +65,7 @@ function _G.set_terminal_keymaps()
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+-- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- vim.cmd("autocmd TermEnter term://*toggleterm#*")
 -- vim.cmd('tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>')
@@ -80,7 +80,7 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 -- map("n", "<space>fb", ":Telescope file_browser<CR>")
 
 -- open file_browser with the path of the current buffer
-map("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
+-- map("n", "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
 -- Alternatively, using lua API
 -- vim.keymap.set("n", "<space>fb", function()
