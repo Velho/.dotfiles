@@ -35,32 +35,32 @@ return {
         end,
         keys = {
             {
-                "<leader>ff",
+                "<leader>sf",
                 -- function() require("telescope.builtin").find_files() end,
                 function() require("telescope").extensions.dir.find_files() end,
             },
             {
-                "<leader>frf",
+                "<leader>srf",
                 function() require("telescope.builtin").find_files() end,
             },
             {
-                "<leader>fg",
+                "<leader>sg",
                 function() require("telescope").extensions.dir.live_grep() end,
             },
             {
-                "<leader>frg",
+                "<leader>srg",
                 function() require("telescope.builtin").live_grep() end,
             },
             {
-                "<leader>fw",
+                "<leader>sw",
                 function() require("telescope.builtin").grep_string() end,
             },
             {
-                "<leader>fb",
+                "<leader>sb",
                 function() require("telescope.builtin").buffers() end,
             },
             {
-                "<leader>fs",
+                "<leader>ss",
                 function() require("telescope.builtin").current_buffer_fuzzy_find() end,
             },
             {
