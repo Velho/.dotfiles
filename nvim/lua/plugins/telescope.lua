@@ -35,12 +35,12 @@ return {
         end,
         keys = {
             {
-                "<leader>sf",
+                "<leader>srf",
                 -- function() require("telescope.builtin").find_files() end,
                 function() require("telescope").extensions.dir.find_files() end,
             },
             {
-                "<leader>srf",
+                "<leader>sf",
                 function() require("telescope.builtin").find_files() end,
             },
             {
