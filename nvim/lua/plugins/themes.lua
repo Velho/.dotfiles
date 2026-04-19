@@ -3,9 +3,6 @@ return {
         'morhetz/gruvbox',
         lazy = false,
         priority = 1000,
-        config = function()
-            vim.cmd([[colorscheme gruvbox]])
-        end,
     },
     {
         'folke/tokyonight.nvim',
@@ -17,4 +14,13 @@ return {
         lazy = false,
         priority = 1000,
     },
+    {
+        'joshdick/onedark.vim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd([[colorscheme onedark]])
+        end,
+
+    }
 }
