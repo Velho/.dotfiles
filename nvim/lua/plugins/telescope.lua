@@ -28,6 +28,7 @@ return {
                         i = {
                             ["<C-k>"] = lga_actions.quote_prompt(),
                             ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                            ["<C-space>"] = lga_actions.to_fuzzy_refine,
                         },
                     },
                 },
@@ -51,6 +52,11 @@ return {
                 "<leader>srg",
                 function() require("telescope.builtin").live_grep() end,
             },
+            {
+                "<leader>sa",
+                function() require("telescope").extensions.live_grep_args.live_grep_args() end,
+            },
+
             {
                 "<leader>sw",
                 function() require("telescope.builtin").grep_string() end,
