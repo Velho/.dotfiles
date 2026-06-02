@@ -39,6 +39,7 @@ return {
             local servers =  {
                 clangd = {},
                 pyright = {},
+                robotcode = {},
                 -- add more stuff here
             }
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
